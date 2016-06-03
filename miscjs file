@@ -17,7 +17,7 @@ mydiv.dataset.brand='mazda' //changes "data-brand" to "mazda"
 mydiv.dataset.brand=null //removes "data-brand" attribute
 
 
----- modify product price, magento based on custom option
+---- modify product price, magento based on custom option product page
 var baseprice = 0.0;
 $('document').ready(function(){ baseprice = $('.pri_ce ul li').first().html(); });
 $('.product-custom-option').on('change', function(){ 
@@ -32,5 +32,11 @@ $('.product-custom-option').on('change', function(){
 });
 
 ---- 
+
+
+
+
+
+
 
 
