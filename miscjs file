@@ -31,7 +31,32 @@ $('.product-custom-option').on('change', function(){
  }
 });
 
----- 
+------- 
+
+jQuery('#contact .full-width-grid a.white-grad-btn').click(function(){ 
+ if(! jQuery('#contact .mailboxContainer .mail-alt-div .col-md-1 input').is(':checked')){
+  jQuery('#contact .mailboxContainer .mail-alt-div .col-md-1 input').each(function(index){ jQuery(this).prop('checked', true); });
+ }else{ 
+  jQuery('#contact .mailboxContainer .mail-alt-div .col-md-1 input').each(function(index){ jQuery(this).prop('checked', false); }); 
+ }
+});
+
+-------
+
+jQuery('.input-box .changeorremove').click(function(){
+  var isDisabled = jQuery('#username').is(':disabled');  alert(isDisabled);
+  if (isDisabled){ 
+    jQuery('#username').prop('disabled', false); 
+  } else { 
+    jQuery('#username').prop('disabled', true); 
+  }
+});
+
+<?php echo Mage::app()->getLayout()
+		->createBlock('udqa/customer_form')
+		->setTemplate('udqa/customer/form.phtml')->toHtml();  ?>
+
+
 
 
 
