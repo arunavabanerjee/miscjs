@@ -32,5 +32,18 @@ urlObject.path         // '/account/search'
 //if string contains characters
 if (str.indexOf("Yes") >= 0)
   
-  
+//----------------------------------------------------------------------------------
+$(document).ready(function(){ 
+ var cPath = window.location.pathname;
+ $('.top_filter ul li').each(function(){ 
+  if( $(this).find('a').attr('href').indexOf(cPath) > 0 ){
+   $(this).find('a').css('border-bottom','2px solid #000')  
+  } 
+ });
+});
+
+
+
+
+
 
