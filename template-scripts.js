@@ -34,16 +34,13 @@ if (str.indexOf("Yes") >= 0)
   
 //----------------------------------------------------------------------------------
 $(document).ready(function(){ 
- var cPath = window.location.pathname;
+ var cPath = window.location.href; alert(cPath);
  $('.top_filter ul li').each(function(){ 
-  if( $(this).find('a').attr('href').indexOf(cPath) > 0 ){
-   $(this).find('a').css('border-bottom','2px solid #000')  
+  var liPath =  $(this).find('a').attr('href'); 
+  if( cPath.indexOf(liPath) > 0 ){ 
+    $(this).find('a').css('border-bottom','2px solid #000');  
   } 
  });
 });
-
-
-
-
 
 
