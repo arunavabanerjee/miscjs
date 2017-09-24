@@ -14,3 +14,18 @@ window.location.port     // (empty string)
 window.location.protocol // http:
 window.location.search   // ?filter=a  
 
+//----------------------------------------------------------------------------------
+
+var url = 'http://www.somedomain.com/account/search?filter=a#top';
+var urlObject = parseUrl(url);
+
+urlObject.href         // 'http://www.somedomain.com/account/search?filter=a#top'
+urlObject.searchParams // { filter: 'a' }
+urlObject.hash         // '#top'
+urlObject.search       // '?filter=a'
+urlObject.protocol     // 'http:'
+urlObject.host         // 'www.somedomain.com'
+urlObject.hostname     // 'www.somedomain.com'
+urlObject.port.        // ''
+urlObject.path         // '/account/search'
+
