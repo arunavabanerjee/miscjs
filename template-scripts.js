@@ -29,3 +29,8 @@ urlObject.hostname     // 'www.somedomain.com'
 urlObject.port.        // ''
 urlObject.path         // '/account/search'
 
+//if string contains characters
+if (str.indexOf("Yes") >= 0)
+  
+  
+
