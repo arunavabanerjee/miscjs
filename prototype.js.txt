@@ -29,7 +29,73 @@ document.observe("dom:loaded", function(){ alert('this');
 </script>
 
 =====================
+<script type="text/javascript">
+//<![CDATA[
+   var productAddToCartForm = new VarienForm('product_addtocart_form');
+   productAddToCartForm.submit = function(button, url) {  
+		  var dataURL = {};  
+       	 html2canvas(document.querySelector(".product-image-gallery")).then(
+                  canvas =>{ 
+		                dataURL = canvas.toDataURL(); //alert(dataURL); document.body.appendChild(canvas); 
+		                document.body.appendChild(canvas);
+		              }
+                });  
 
+	        /*function post_data(imageURL) {  
+        	    //console.log(imageURL);  
+        	    $.ajax({  
+        	        url: "save_data.php",  
+        	        type: "POST",  
+        	        data: {  
+        	            image: imageURL  
+        	        },  
+        	        dataType: "html",  
+        	        success: function() {  
+        	            alert(‘Success!!’);  
+        	            location.reload();  
+        	        }  
+        	    });  
+        	}*/  
+
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+                    if (url) { form.action = url; }
+                    var e = null;
+                    try{ this.form.submit(); } catch (e){ }
+                    this.form.action = oldUrl;
+                    if (e){ throw e; }
+                    if (button && button != 'undefined') { button.disabled = true; }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        //]]>
+        </script>
+
+
+=====================
 //creation of dom element
 <script>
 document.observe("dom:loaded", function() { alert('this');
