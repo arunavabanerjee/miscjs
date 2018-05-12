@@ -1,7 +1,22 @@
 
+//capture image from within a div using prototype and html2canvas
+//image appears below in the body segment
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> 
+<script>
+document.observe("dom:loaded", function(){ alert('this');
+  $('product-1').addClassName('classnew');
+  $('product-1').setStyle({ backgroundColor: '#990000', fontSize: '12px' });
+  var dataURL = {};  
+  html2canvas(document.querySelector(".product-image-gallery")).then(
+    canvas =>{  
+       document.body.appendChild(canvas); //console.log(canvas.toDataURL());  
+       dataURL = canvas.toDataURL(); //alert(dataURL); 
+    }
+  );
+});
+</script>
 
-
-
+=====================
 
 //creation of dom element
 <script>
