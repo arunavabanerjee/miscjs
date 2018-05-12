@@ -31,15 +31,15 @@ document.observe("dom:loaded", function(){ alert('this');
 =====================
 <script type="text/javascript">
 //<![CDATA[
-   var productAddToCartForm = new VarienForm('product_addtocart_form');
-   productAddToCartForm.submit = function(button, url) {  
-		  var dataURL = {};  
-       	 html2canvas(document.querySelector(".product-image-gallery")).then(
-                  canvas =>{ 
-		                dataURL = canvas.toDataURL(); //alert(dataURL); document.body.appendChild(canvas); 
-		                document.body.appendChild(canvas);
-		              }
-                });  
+ var productAddToCartForm = new VarienForm('product_addtocart_form');
+ productAddToCartForm.submit = function(button, url) {  
+   var dataURL = {};  
+   html2canvas(document.querySelector(".product-image-gallery")).then(
+    canvas =>{ 
+	dataURL = canvas.toDataURL(); //alert(dataURL); document.body.appendChild(canvas); 
+	document.body.appendChild(canvas);
+   });
+        
 
 	        /*function post_data(imageURL) {  
         	    //console.log(imageURL);  
