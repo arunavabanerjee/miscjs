@@ -15,6 +15,18 @@ document.observe("dom:loaded", function(){ alert('this');
   );
 });
 </script>
+===================
+<script>
+document.observe("dom:loaded", function(){ alert('this');
+  var dataURL = {};  
+  html2canvas(document.querySelector(".product-image-gallery")).then(
+    canvas =>{ 
+       dataURL = canvas.toDataURL(); //alert(dataURL);  
+       //document.body.appendChild(canvas); 
+    }
+  );
+});
+</script>
 
 =====================
 
