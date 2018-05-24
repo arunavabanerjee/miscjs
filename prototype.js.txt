@@ -1,4 +1,21 @@
 
+//--------------------html canvas -------------------------------
+<script type="text/javascript">
+jQuery(document).ready(function(){
+    //jQuery("#pro_thmb li img").click(function(){
+    //  jQuery("#main-image img").attr("src", jQuery(this).attr("data-main-image-src"));
+    //});
+    //--------------------------------------------------------------------------
+    var dataURL = {};  
+    html2canvas(document.querySelector(".product-image-gallery")).then(
+    canvas =>{ 
+	dataURL = canvas.toDataURL(); alert(dataURL); 
+	document.body.appendChild(canvas);
+    });    
+   //--------------------------------------------------------------------------
+});
+</script>
+
 //-----------------htmlcanvas--in prototype
 <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
         <script type="text/javascript">
