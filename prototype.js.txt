@@ -1,4 +1,87 @@
 
+//-----------------htmlcanvas--in prototype
+<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+        <script type="text/javascript">
+        //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function(button, url) { alert('this');
+
+		//var imgurl = $$('.product-image-gallery #image-main')[0].readAttribute('src'); 
+		//alert(imgurl);
+
+		var dataURL = {};  
+		html2canvas(document.querySelector(".product-image-gallery")).then(
+		  canvas =>{ 
+			dataURL = canvas.toDataURL(); alert(dataURL); 
+			document.body.appendChild(canvas);
+    		});    
+
+
+
+		//html2canvas(document.querySelector(".product-image-gallery")).then(function(canvas) {
+    		//	document.body.appendChild(canvas);
+		//});
+
+		//--- get the data url
+		//var dataURL = {};  
+              	//html2canvas(document.querySelector(".product-image-gallery")).then(
+                //  canvas =>{ 
+		//    dataURL = canvas.toDataURL(); alert(dataURL); 
+		//    document.body.appendChild(canvas);
+		//  }
+		//);    
+
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    /*if (url) {
+                       form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }*/
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function(button, url){
+                if(this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                    /*    if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit(); */
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+        //]]>
+        </script>
+//--------------------------------------------------------------------------------------------- 
+
+
+//---------------------------------------------------------------------------------------------
 //capture image from within a div using prototype and html2canvas
 //image appears below in the body segment
 <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script> 
