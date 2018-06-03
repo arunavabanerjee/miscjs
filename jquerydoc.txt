@@ -5,6 +5,74 @@ and manipulation, event handling, animation, and Ajax much simpler with an easy-
 a multitude of browsers.
 About jQuery, Using jQuery Core, Events, Effects, Ajax, Plugins, Performance
 Code Organization, jQuery UI, jQuery Mobile
+--------------------------------------------
+Events>DocumentLoading
+----------------------
+The $.holdReady() method allows the caller to delay jQuery's ready event. This advanced feature would typically be used by dynamic script loaders that want to load additional JavaScript such as jQuery plugins before allowing the ready event to occur, even though the DOM may be ready. This method must be called early in the document, such as in the <head> immediately after the jQuery script tag. Calling this method after the ready event has already fired will have no effect.
+Also, Listen for document ready using jQuery.when.
+$.when( $.ready ).then(function() { // Document is ready. });
+Typical usage involving another promise, using jQuery.when.
+$.when(
+  $.getJSON( "ajax/test.json" ),
+  $.ready
+).done(function( data ) {
+  // Document is ready.
+  // Value of test.json is passed as `data`.
+});
+---
+Deprecated version 1.8, removed in 3.0
+Run a function when the page is fully loaded including graphics.
+$( window ).load(function() {
+  // Run code
+});
+Add the class bigImg to all images with height greater than 100 upon each image load.
+$( "img.userIcon" ).load(function() {
+  if ( $( this ).height() > 100) {
+    $( this ).addClass( "bigImg" );
+  }
+});
+-----
+The .ready() method offers a way to run JavaScript code as soon as the page's Document Object Model (DOM) becomes safe to manipulate. This will often be a good time to perform tasks that are needed before the user views or interacts with the page, for example to add event handlers and initialize plugins. When multiple functions are added via successive calls to this method, they run when the DOM is ready in the order in which they are added. As of jQuery 3.0, jQuery ensures that an exception occuring in one handler does not prevent subsequently added handlers from executing.
+--
+Browsers also provide the load event on the window object. When this event fires it indicates that all assets on the page have loaded, including images. This event can be watched in jQuery using $( window ).on( "load", handler ). In cases where code relies on loaded assets (for example, if the dimensions of an image are required), the code should be placed in a handler for the load event instead.
+Note that although the DOM always becomes ready before the page is fully loaded, it is usually not safe to attach a load event listener in code executed during a .ready() handler. For example, scripts can be loaded dynamically long after the page has loaded using methods such as $.getScript(). Although handlers added by .ready() will always be executed in a dynamically loaded script, the window's load event has already occurred and those listeners will never run.
+$( document ).ready( handler )
+$( "img" ).ready( handler )
+$( document ).ready(function() {
+  // Handler for .ready() called.
+});
+Which is equivalent to the recommended way of calling:
+$(function() {
+  // Handler for .ready() called.
+});
+jq2 = jQuery.noConflict();
+jq2(function( $ ) {
+  // Code using $ as usual goes here; the actual jQuery object is jq2
+});
+The unload event is sent to the window element when the user navigates away from the page. This could mean one of many things. The user could have clicked on a link to leave the page, or typed in a new URL in the address bar. The forward and back buttons will trigger the event. Closing the browser window will cause the event to be triggered. Even a page reload will first create an unload event.
+Any unload event handler should be bound to the window object:
+$( window ).unload(function() {
+  return "Handler for .unload() called.";
+});
+To display an alert when a page is unloaded:
+$( window ).unload(function() {
+  return "Bye now!";
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
