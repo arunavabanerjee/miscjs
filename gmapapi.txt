@@ -1,0 +1,16 @@
+Maps
+Build customized, agile experiences that bring the real world to your users with static and dynamic maps, 
+Street View imagery, and 360° views. Features included: Maps, Street View. 
+APIs and SDKs supporting Maps:
+Maps Static API- Add simple, embeddable map images to your website with minimal code. 
+Maps JavaScript API - Add an interactive map to your website. Customize it with your own content and imagery. 
+Street View API - Embed real-world imagery with 360° panoramas. 
+Maps URLs - Launch Google Maps and initiate an action, like search or directions, using a cross-platform URL scheme.
+Maps Embed API - Add an interactive map, or Street View panorama to your site, using a simple HTTP request. 
+Maps SDK for Android - Add a map to your Android app. 
+Maps SDK for iOS - Add a map to your iOS app. 
+
+
+
+
+
