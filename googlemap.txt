@@ -1,0 +1,278 @@
+<!------------------------------------- Googel Map Integration------------------------------------!-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCweO2okyDMj7-asSAs1u4x2Irui0syrlI"></script> 
+<script>
+  $(document).ready(function(){ 
+    //var zip_in='700104'; 
+    //var zip_in = 'Jessore Rd'+'Dum Dum'+'Kolkata'+'West Bengal'+'700052';
+    var zip_in = 'Jessore Rd, Dum Dum, Kolkata, West Bengal. 700052';
+    if ((zip_in.length >= 6)){ 
+            $.ajax({
+                 //asyn: false,
+                 //url: "http://maps.googleapis.com/maps/api/geocode/json?address="+ zip_in +"&sensor=false&components=country:IN",
+                 url: "http://maps.googleapis.com/maps/api/geocode/json?address="+ zip_in +"&sensor=false",
+                 cache: false,
+                 dataType: "json",
+                 type: "GET",
+                 success: function(result, success) {
+                    //console.log(result);
+                    //-- google --//
+                    //$j("#city").val(result.results[0].address_components[1].long_name);
+                    //$j("#state").val(result.results[0].address_components[3].long_name);
+                    lattitude = result.results[0].geometry.location.lat; 
+                    longitude = result.results[0].geometry.location.lng; 
+                    //console.log(lattitude); console.log(longitude);
+                                        
+                    var myLatlng = new google.maps.LatLng(lattitude, longitude); 
+                    var myOptions = { zoom: 14, center: myLatlng, mapTypeId: google.maps.MapTypeId.ROADMAP };
+                    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
+                    var marker = new google.maps.Marker({ position: myLatlng, map: map }); 
+                                       
+                 },
+                 error: function(result, error) {
+                        //console.log(result);
+                        console.log(error);
+                 },
+                 complete: function(result, success) {
+                        //console.log(result);
+                        console.log(success);					
+                 }
+           });
+
+     }
+     
+  });
+</script>
+
+
+<!------------------------------------- Googel Map Integration------------------------------------!-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCweO2okyDMj7-asSAs1u4x2Irui0syrlI"></script> 
+<script>
+  $(document).ready(function(){ 
+    var zip_in='700104'; 
+    if ((zip_in.length == 6)){ 
+            $.ajax({
+                 //asyn: false,
+                 url: "http://maps.googleapis.com/maps/api/geocode/json?address="+ zip_in +"&sensor=false&components=country:IN",
+                 cache: false,
+                 dataType: "json",
+                 type: "GET",
+                 success: function(result, success) {
+                    //console.log(result);
+                    //-- google --//
+                    //$j("#city").val(result.results[0].address_components[1].long_name);
+                    //$j("#state").val(result.results[0].address_components[3].long_name);
+                    lattitude = result.results[0].geometry.location.lat; 
+                    longitude = result.results[0].geometry.location.lng; 
+                    //console.log(lattitude); console.log(longitude);
+                                        
+                    var myLatlng = new google.maps.LatLng(lattitude, longitude); 
+                    var myOptions = { zoom: 14, center: myLatlng, mapTypeId: google.maps.MapTypeId.ROADMAP };
+                    var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions); 
+                    var marker = new google.maps.Marker({ position: myLatlng, map: map }); 
+                                       
+                 },
+                 error: function(result, error) {
+                        //console.log(result);
+                        console.log(error);
+                 },
+                 complete: function(result, success) {
+                        //console.log(result);
+                        console.log(success);					
+                 }
+           });
+
+     }
+     
+  });
+</script>
+
+
+
+
+//========================================================================================
+
+    <li>
+     <div class="form-group clearfix"> 
+      <div class="col-sm-2">
+         <label for="postcode" class="required"><em>*</em><?php echo Mage::helper('core')->__('Postcode') ?></label>
+      </div>
+      <div class="col-sm-10">
+        <input name="postcode" id="postcode" title="<?php echo Mage::helper('core')->__('Postcode') ?>" value="<?php echo Mage::getSingleton('core/session')->getPostcode(); ?>" class="input-text validate-zip-india form-control required-entry" type="text" />
+      </div>
+     </div>  
+    </li>
+
+<script type="text/javascript">
+//<![CDATA[
+ var contactForm = new VarienForm('popupForm', true);
+//]]>
+</script>
+
+<script>
+$j(function() {
+	// OnKeyDown Function
+	$j("#postcode").keyup(function() { 
+		var zip_in = $j(this);
+		//var zip_box = $j('#zipbox');
+		//if (zip_in.val().length<6) {  zip_box.removeClass('error success'); }
+		//else if ( zip_in.val().length>6) { zip_box.addClass('error').removeClass('success'); }
+		//else if ((zip_in.val().length == 6) ) {
+		if ((zip_in.val().length == 6) ) { 
+			// Make HTTP Request
+			$j.ajax({
+				//asyn: false,
+				//url: "http://api.zippopotam.us/IN/" + zip_in.val(),
+				url: "http://maps.googleapis.com/maps/api/geocode/json?address="+ zip_in.val() +"&sensor=false&components=country:IN",
+				cache: false,
+				dataType: "json",
+				type: "GET",
+			  	success: function(result, success) {
+					//console.log(result);
+					// US Zip Code Records Officially Map to only 1 Primary Location
+					//-- zapotam -- //
+					//places = result['places'][0];
+					//$j("#city").val(places['place name']);
+					//$j("#state").val(places['state']);
+					//lattitude = places['latitude'];
+					//longitude = places['longitude'];
+					//zip_box.addClass('success').removeClass('error');
+
+					//-- google --//
+					//$j("#city").val(result.results[0].address_components[1].long_name);
+					//$j("#state").val(result.results[0].address_components[3].long_name);
+					//aplaceid = result.results[0].place_id;
+					lattitude = result.results[0].geometry.location.lat; 
+					longitude = result.results[0].geometry.location.lng; 
+					//console.log(lattitude); console.log(longitude);
+
+					$j.ajax({
+						//asyn: false,
+						url: "http://maps.googleapis.com/maps/api/geocode/json?latlng="+ lattitude + "," + longitude + "&sensor=true", 
+						//url: "https://maps.googleapis.com/maps/api/place/details/json?placeid="+ aplaceid + "&key=AIzaSyCBx-_yd_s3Fs3ITpYGmdwipd8RbbTcPtg",
+						cache: false,
+						dataType: "json",
+						type:"GET", 
+						success: function(resultpl, successpl){
+							//console.log(resultpl);
+							asize = resultpl.results[0].address_components.length;
+							adminlevel2 = resultpl.results[0].address_components[asize-4].long_name;
+							adminlevel1 = resultpl.results[0].address_components[asize-3].long_name;
+							$j("#city").val(adminlevel2);							
+							$j("#state").val(adminlevel1);
+						},
+						error: function(resultpl, successpl){
+							console.log(resultpl);
+							console.log(successpl);
+						}
+					});
+		
+				},
+				error: function(result, success) {
+					console.log(result);
+					console.log(success);
+				},
+				complete: function(result, success) {
+					console.log(result);
+					console.log(success);					
+				}
+			});
+
+		}
+	});
+});
+</script>
+=======================================================================================================
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnZg1Rj3rYN0y_btJViphAFKPKVDIHHXA"></script>
+<script>
+jQuery(document).ready(function(){ 
+   var inilat = 24.7136; var inilong = 46.6753;  
+   initMap(inilat, inilong); 
+});
+
+//on city-field focusout function
+jQuery('.form-list #street1').focusout(function(){ alert('this');
+  var city = jQuery('.form-list #city').val(); 
+  var street = jQuery('.form-list #street1').val();
+  var country = jQuery('.form-list #country_id').val();
+  
+  if(city != '' && street != ''){ 
+     var zip_in = street + ',+' + city + ',+' + country; 
+     var address = zip_in.replace(/ /g, "+"); //console.log(address);
+     jQuery.ajax({
+     	url: "http://maps.googleapis.com/maps/api/geocode/json?address="+ address +"&sensor=false&components=country:SA",
+     	cache: false,
+     	dataType: "json",
+     	type: "GET",
+     	success: function(result, success) { //console.log(result);
+	  lattitude = result.results[0].geometry.location.lat; //console.log(lattitude);
+	  longitude = result.results[0].geometry.location.lng; //console.log(longitude); 
+	  initMap(lattitude, longitude); 
+     }
+  });
+  } 
+});
+
+function initMap(lattitude, longitude) {
+  var place = {lat: lattitude, lng: longitude};
+  var map = new google.maps.Map(document.getElementById('registration-map'), {
+     zoom: 11,
+     center: place
+  });
+  var marker = new google.maps.Marker({
+     position: place,
+     map: map
+  });
+}
+</script>
+
+==============================================================================================================================
+
+<div id="registration-map" style="width:510px;height:400px;background-color:#eee;"></div> 
+<input type="hidden" name="customer-lattitude" id="customer-lattitude" value='' />
+<input type="hidden" name="customer-longitude" id="customer-longitude" value='' />
+----
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDnZg1Rj3rYN0y_btJViphAFKPKVDIHHXA"></script>
+<script>
+jQuery(document).ready(function(){ 
+   var inilat = 24.7136; var inilong = 46.6753;  
+   initMap(inilat, inilong); 
+});
+
+//on zip-field focusout function
+jQuery('.form-list #zip').focusout(function(){ alert('this');
+  var city = jQuery('.form-list #city').val(); 
+  var street = jQuery('.form-list #street_1').val();
+  var country = jQuery('.form-list #country').val();
+  
+  if(city != '' && street != ''){ 
+     var zip_in = street + ',+' + city + ',+' + country; 
+     var address = zip_in.replace(/ /g, "+"); console.log(address);
+     jQuery.ajax({
+     	url: "http://maps.googleapis.com/maps/api/geocode/json?address="+ address +"&sensor=false&components=country:SA",
+     	cache: false,
+     	dataType: "json",
+     	type: "GET",
+     	success: function(result, success) { console.log(result);
+	  lattitude = result.results[0].geometry.location.lat; //console.log(lattitude);
+	  longitude = result.results[0].geometry.location.lng; //console.log(longitude); 
+          jQuery('form #customer-lattitude').val(lattitude);
+	  jQuery('form #customer-longitude').val(longitude);
+	  initMap(lattitude, longitude); 
+       }
+    });
+  } 
+});
+
+function initMap(lattitude, longitude){
+  var place = {lat: lattitude, lng: longitude};
+  var map = new google.maps.Map(document.getElementById('registration-map'), {
+     zoom: 11,
+     center: place
+  });
+  var marker = new google.maps.Marker({
+     position: place,
+     map: map
+  });
+}
+</script>
+
