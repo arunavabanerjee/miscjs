@@ -1,0 +1,6 @@
+//
+// workings 
+1. get sitekey and secretkey from google
+2. embed ".../recaptcha/api.js" before head tag 
+3. 
+
