@@ -1,0 +1,10 @@
+
+//selection of a page 
+// keep only the html and remove text
+$(document).ready(function(){
+ var imgurl = "https://goddesshair.co.uk/image/data/paycard.png";
+ if( window.location.href.indexOf('checkout/checkout_onepage') > 0){
+   $('#tbl_pament_methods tr:last label').html($('#tbl_pament_methods tr:last label').children());
+   $('#tbl_pament_methods tr:last label').append('<img src="'+imgurl+'" width=38 alt="image"/> <span> Card</span>');
+ } 
+});
