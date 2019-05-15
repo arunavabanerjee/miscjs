@@ -1,3 +1,18 @@
+----- add class and remove child elements
+$(document).ready(function(){ 
+   $('#product-list-grid li').each(function(){ 
+       if( $(this).find('.rating').length > 0){
+         var imghtml = $(this).find('.rating').html(); alert(imghtml);
+         var src = $(imghtml).attr('src'); var imgpath = src.split('/'); 
+         var lastVal = imgpath[imgpath.length - 1]; //alert(lastVal);
+         var value = lastVal.replace(/\D/g,''); alert(value);
+         $(this).find('.rating').addClass('homeratingview prorating'+value); 
+         $(this).find('.rating').empty();
+       }
+   });
+});
+
+
 
 -- using data attribute in html5
 <div id="mydiv" data-brand="toyota" data-model="prius">
